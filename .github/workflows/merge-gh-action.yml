@@ -9,7 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          git pull
           git fetch origin main
           git fetch origin test-env-1
           git checkout test-env-1
