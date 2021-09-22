@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
+      
+      - name: Pull Latest Main and Test Environment Branches
+        run: |
           git fetch origin main
           git fetch origin test-env-1
           git checkout test-env-1
-          git merge --allow-unrelated-histories main
-          git status
+          git pull origin test-env-1
+          
