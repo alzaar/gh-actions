@@ -15,4 +15,6 @@ jobs:
           git fetch origin test-env-1
           git checkout test-env-1
           git pull origin test-env-1
-          
+      - name: Merge Latest
+        run: |
+          git branch
