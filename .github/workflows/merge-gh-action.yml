@@ -23,3 +23,11 @@ jobs:
           source_ref: ${{ github.ref }}
           target_branch: 'test-env-2'
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+      
+      - name: Test Env. 3
+        uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ github.token }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'test-env-3'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
