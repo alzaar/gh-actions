@@ -1,28 +1,3 @@
-# name: Sync multiple branches
-# on:
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   sync-branch:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-      
-#       - name: Pull Latest Main and Test Environment Branches
-#         run: |
-#           git fetch origin main
-#           git fetch origin test-env-1
-#           git checkout test-env-1
-#           git pull origin test-env-1
-        
-#       - name: Configure Github Access
-#         with:
-#           github_token: ${{ github.token }}
-#       # - name: Merge Latest
-#       #   run: |
-#       #     git merge --allow-unrelated-histories main
-
 on:
   push:
     branches:
@@ -32,9 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: everlytic/branch-merge@1.1.2
+      
+      - name: Test Env. 1
+        uses: everlytic/branch-merge@1.1.2
         with:
           github_token: ${{ github.token }}
           source_ref: ${{ github.ref }}
           target_branch: 'test-env-1'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+
+      - name: Test Env. 2
+        uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ github.token }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'test-env-2'
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
