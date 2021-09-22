@@ -8,11 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Merge development -> staging
-        uses: devmasx/merge-branch@v1.4.0
-        with:
-          type: now
-          from_branch: main
-          target_branch: test-env-1
-          github_token: ${{ github.token }}
+      - run: |
+          git checkout test-env-1
+          git merge main
+          git push origin test-env-1
