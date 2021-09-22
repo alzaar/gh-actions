@@ -2,7 +2,7 @@ name: Sync multiple branches
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
@@ -13,14 +13,6 @@ jobs:
         uses: test-br-1
         with:
           type: now
-          from_branch: master
+          from_branch: main
           target_branch: test-env-1
-          github_token: ${{ github.token }}
-
-      - name: Merge staging -> uat
-        uses: test-br-1
-        with:
-          type: now
-          from_branch: staging
-          target_branch: uat
           github_token: ${{ github.token }}
