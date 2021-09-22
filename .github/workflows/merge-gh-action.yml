@@ -12,5 +12,5 @@ jobs:
           git fetch origin main
           git fetch origin test-env-1
           git checkout test-env-1
-          git merge main
+          git merge --allow-unrelated-histories main
           git status
